@@ -1,0 +1,7 @@
+opencv_python
+tqdm
+pyyaml
+lpips
+tensorboardX
+thop
+

@@ -1,0 +1,64 @@
+GENERAL:
+  GPU_ID: 4
+  SEED: 123
+
+DATA:
+  MODE: multi  # use multi-frames or single repetitive frames 'single'
+  TRAIN_DATASET: dataset/homo/tcl/train/  # path of train frames
+  TEST_DATASET: dataset/homo/tcl/test/    # path of test frames
+  HEIGHT: 720   # height of the frame
+  WIDTH: 1280   # width of the frame
+  frames_each_video: 60  # number of frames each video
+#  flow_path: dataset/homo/tcl/train/source_flow/  # path of pre-computed optical flow, None
+
+TRAIN:
+  N_G: 128
+  N_D: 64
+  LOADER: crop   # crop image for training
+  MODEL_DIR: vdm_shuffle_f3_i1_w50_t2_mbr_scratch_v2/model_dir
+  EPOCHS: 100
+  BASE_LR: 0.0002
+  BATCH_SIZE: 1
+  CROP_SIZE: 384
+  RESIZE_H:
+  RESIZE_W:
+  SAVE_ITER: 500  # save intermediate results every xxx iterations
+  LOAD_EPOCH: 0  # resume training. if 0, train from scratch
+  LOGS_DIR: vdm_shuffle_f3_i1_w50_t2_mbr_scratch_v2/model_dir/logs
+  VISUALS_DIR: vdm_shuffle_f3_i1_w50_t2_mbr_scratch_v2/model_dir/visuals
+  NETS_DIR: vdm_shuffle_f3_i1_w50_t2_mbr_scratch_v2/model_dir/nets
+  DECAY_EPOCH: 10  # cosine learning rate, xx epochs/round
+  DECAY_FACTOR: 0.5
+  MIN_LR: 0.000001
+  WEIGHT_PEC: 1.0  # weights of the perceptual loss
+  WEIGHT_L1: 0.5  # weights of the L1 loss
+  NUM_AUX_FRAMES: 2  # number of auxiliary frames, > 0
+  FRAME_INTERVAL: 1  # frame intervals
+  num_res_blocks: 16+16+8+4
+  n_feats: 64
+  res_scale: 1
+  backbone: vdm_pcd_v1
+#  use_flow: False  # use estimated optical flow?
+  use_occu:
+  use_shuffle: True  # use pixel shuffle?
+  use_temporal: True  # use temporal constraints
+  weight_t: 50   # weights of temporal consistency loss (multi-scale relation-based)
+  temporal_begin_epoch: 50  # which epoch begins to invoke temporal constraints
+  temporal_loss_mode: 1   # which kind of temporal consistency? 0: basic relation_based; 1: multi_scale based
+  k_sizes: [1, 3, 5, 7]  # kernel sizes for multi-scale relation-based loss
+#  k_weights: [0.25, 0.25, 0.25, 0.25]  # weights used to blend different scales
+
+TEST:
+  VAL_RESULT_DIR: vdm_shuffle_f3_i1_w50_t2_mbr_scratch_v2/val_result  # folder to save validation results
+  VAL_TIME: 5  # validate every xxx epochs
+  TEST_EPOCH: 59  # test epoch, 59 means 'checkpoint_000059.tar'
+  TEST_RESULT_DIR: vdm_shuffle_f3_i1_w50_t2_mbr_scratch_v2/test_result  # folder to save test results
+  SAVE_IMG: jpg  # image suffix for storage
+  have_gt: True  # have GT during test? If true, calculate metrics
+
+SOLVER:
+  WARM_UP_ITER: 500
+  WARM_UP_FACTOR: 0.1
+  MAX_ITER: 1482000   # training epochs * num of training images
+  T_PERIOD: [148200, 296400, 444600, 592800, 741000, 889200, 1037400, 1185600, 1333800, 1482000]  # n*DECAY_EPOCH*num of training images, every 10 epochs
+  #T_PERIOD: [370500, 741000, 1111500, 1482000]  # every 25 epochs

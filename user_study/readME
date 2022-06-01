@@ -1,0 +1,8 @@
+Step 1:
+Correct the path of source video folder in line 14 of play.py
+video_folder = [folder path]
+
+Step 2: 
+python play.py
+
+The results will be saved in results/ with time stamp.
