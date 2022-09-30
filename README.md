@@ -18,6 +18,9 @@ In [data_v1](https://www.dropbox.com/sh/5pkntn20785gqqj/AADmYCroOu5YDhzGam6Nhoz9
 <br>
 <br>
 Please download and unzip the dataset you need, then change the data paths in 'config/video_demoire_temporal_mbr_scratch_v2.yaml' line 7 and 8. Note that the results in our paper are based on the data_v1.  
+<br>
+<br>
+To train a model better suited for your use or device, you can follow the 'dataset_prepare/data_prepare.py' step by step to prepare your own training data.
 
 
 ## Environments
