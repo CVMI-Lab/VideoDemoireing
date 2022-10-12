@@ -14,7 +14,7 @@ Our video demoireing network mainly consists of three parts: First, the PCD take
 We constrcut the first video demoireing dataset, containing 290 videos (720p, 60 frames for each video), and the equipments we adpoted are 'TCL20 pro mobile phone + Huipu v270 monitor' and 'iPhoneXR + MackBook Pro'. 
 <br> 
 <br>
-In [data_v1](https://www.dropbox.com/sh/5pkntn20785gqqj/AADmYCroOu5YDhzGam6Nhoz9a?dl=0), image pairs are aligned using the homography. In [data_v2](https://www.dropbox.com/sh/7trmzm2slm2qlg8/AADt3e8MH_52EyLKFtZwXirJa?dl=0), aligned image pairs are refined using the estimated optical flow. Besides, we also provide the [original](https://www.dropbox.com/sh/1mdmsss20f0ean9/AAAu3kS_jiDzOP_UaKT4grgPa?dl=0) moire videos. 
+In [data_v1](https://www.dropbox.com/sh/5pkntn20785gqqj/AADmYCroOu5YDhzGam6Nhoz9a?dl=0), image pairs are aligned using the homography. In [data_v2](https://www.dropbox.com/sh/7trmzm2slm2qlg8/AADt3e8MH_52EyLKFtZwXirJa?dl=0), aligned image pairs are refined using the estimated optical flow. Besides, we also provide the [original](https://www.dropbox.com/sh/1mdmsss20f0ean9/AAAu3kS_jiDzOP_UaKT4grgPa?dl=0) moire videos. The [Baidu_disk_link](https://pan.baidu.com/s/18evBGvTHwN2lL2Oo7ao8-Q), and the password: b28v 
 <br>
 <br>
 Please download and unzip the dataset you need, then change the data paths in 'config/video_demoire_temporal_mbr_scratch_v2.yaml' line 7 and 8. Note that the results in our paper are based on the data_v1.  
