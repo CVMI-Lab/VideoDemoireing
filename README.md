@@ -11,13 +11,13 @@ Peng Dai, Xin Yu, Lan Ma, Baoheng Zhang, Jia Li, Wenbo Li, Jiajun Shen, [Xiaojua
 Our video demoireing network mainly consists of three parts: First, the PCD takes consecutive frames as inputs to implicitly align frames in the feature space. Second, the feature aggregation module merges aligned frame features at different scales by predicting blending weights. Third, the merged features are sent to the demoire model with dense connections to realize moire artifacts removal.
 
 ## Dataset
-We constrcut the first video demoireing dataset, containing 290 videos (720p, 60 frames for each video), and the equipments we adpoted are 'TCL20 pro mobile phone + Huipu v270 monitor' and 'iPhoneXR + MackBook Pro'. 
+We construct the first video demoireing dataset, containing 290 videos (720p, 60 frames for each video), and the equipment we adopted are 'TCL20 pro mobile phone + Huipu v270 monitor' and 'iPhoneXR + MackBook Pro'. 
 <br> 
 <br>
 In [data_v1](https://www.dropbox.com/sh/5pkntn20785gqqj/AADmYCroOu5YDhzGam6Nhoz9a?dl=0), image pairs are aligned using the homography. In [data_v2](https://www.dropbox.com/sh/7trmzm2slm2qlg8/AADt3e8MH_52EyLKFtZwXirJa?dl=0), aligned image pairs are refined using the estimated optical flow. Besides, we also provide the [original](https://www.dropbox.com/sh/1mdmsss20f0ean9/AAAu3kS_jiDzOP_UaKT4grgPa?dl=0) moire videos. The [Baidu_disk_link](https://pan.baidu.com/s/18evBGvTHwN2lL2Oo7ao8-Q), and the password: b28v 
 <br>
 <br>
-Please download and unzip the dataset you need, then change the data paths in 'config/video_demoire_temporal_mbr_scratch_v2.yaml' line 7 and 8. Note that the results in our paper are based on the data_v1.  
+Please download and unzip the dataset you need, then change the data paths in 'config/video_demoire_temporal_mbr_scratch_v2.yaml' lines 7 and 8. Note that the results in our paper are based on the data_v1.  
 <br>
 <br>
 To train a model better suited for your use or device, you can follow the 'dataset_prepare/data_prepare.py' step by step to prepare your own training data.
@@ -32,7 +32,7 @@ Create the conda virtual environment (python 3.7) and activate it.
 ```conda activate vdm ```
 <br>
 <br>
-Intsall pytorch 1.6.0 and other libaries in the 'requirements.txt'.
+Install pytorch 1.6.0 and other libraries in the 'requirements.txt'.
 <br>
 ```conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.2 -c pytorch```
 <br>
@@ -55,7 +55,7 @@ To train the model, just run:
 ```python train.py --config config/video_demoire_temporal_mbr_scratch_v2.yaml```
 <br>
 <br>
-Note: if too large offsets appear while training the PCD model, please restart training. Alternatively, you can use this [model](https://www.dropbox.com/s/24aq2eztafuiyjp/checkpoint_000002.tar?dl=0) (train two epoches) to initialize the network.      
+Note: if too large offsets appear while training the PCD model, please restart training. Alternatively, you can use this [model](https://www.dropbox.com/s/24aq2eztafuiyjp/checkpoint_000002.tar?dl=0) (train two epochs) to initialize the network.      
 
 ## Test
 To test the model, just run:
@@ -63,11 +63,11 @@ To test the model, just run:
 ```python test.py --config config/video_demoire_temporal_mbr_scratch_v2.yaml```
 <br>
 <br>
-We also provide pre-trained models for both [TCL](https://www.dropbox.com/sh/9yqd5ui9h7cjwy3/AADSn8AFEP4ewzk3QFdwpz8-a?dl=0) and [iPhone](https://www.dropbox.com/sh/jalr5860ukesgvl/AAC2ozt00TgzWzSgFTRG-z8ma?dl=0). The 'checkpoint_000049.tar' means no realtion-based loss, and 'checkpoint_000059.tar' means with realtion-based loss. Please download these models into the corresponding folder (line 29) and change the test epoch (line 54) as descirbed in 'config/video_demoire_temporal_mbr_scratch_v2.yaml'.  
+We also provide pre-trained models for both [TCL](https://www.dropbox.com/sh/9yqd5ui9h7cjwy3/AADSn8AFEP4ewzk3QFdwpz8-a?dl=0) and [iPhone](https://www.dropbox.com/sh/jalr5860ukesgvl/AAC2ozt00TgzWzSgFTRG-z8ma?dl=0). The 'checkpoint_000049.tar' means no relation-based loss, and 'checkpoint_000059.tar' means relation-based loss. Please download these models into the corresponding folder (line 29) and change the test epoch (line 54) as described in 'config/video_demoire_temporal_mbr_scratch_v2.yaml'.  
 
 
 ## Results
-<img src='./images/results.png' width=1000>
+<img src='./images/vdmoire.gif' width=1000>
 
 
 ## Contact
